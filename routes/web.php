@@ -39,6 +39,9 @@ Route::get('/test', function () {
     return Inertia::render('Test');
 });
 
+Route::get('/tags', function () {
+    return Inertia::render('TagGenerator');
+});
 
 
 
