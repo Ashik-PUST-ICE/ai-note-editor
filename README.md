@@ -1,61 +1,165 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 📝 AI-Enhanced Note Editor
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+An AI-powered Note Editor web application built with **Laravel 12**, **React**, **Inertia.js**, and **OpenAI GPT-4.1 Nano**, enabling users to create, edit, and manage notes with AI features like summarization and tag generation.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Project Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+This project is part of a mid-level developer assessment. The goal is to build a full-stack application with:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Google OAuth authentication
+- Full CRUD for notes
+- AI-powered enhancements (summarize, tag generation)
+- Real-time AI streaming
+- Raw PHP integration outside Laravel
+- Clean and responsive UI
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## ✨ Key Features
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### 🔐 Authentication
+- Google OAuth login using Laravel Socialite
+- User profile info (name, email) saved in DB
+- Authenticated routes protected by middleware
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 📝 Note Management
+- Create, read, update (with auto-save), and delete notes
+- Dashboard to view all notes
+- Clean and responsive Note Editor
 
-## Laravel Sponsors
+### 🤖 AI Enhancements (OpenAI Integration)
+- **Summarize**: Auto-generate a summary of the note content
+- **Generate Tags**: Extract key tags from notes
+- Streaming output from OpenAI API (gpt-4.1-nano)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### 🧩 Raw PHP Component
+- Separate script outside Laravel
+- Demonstrates legacy PHP integration with Laravel
+- Performs a simple note-processing task
 
-### Premium Partners
+### 🖥️ UI & Frontend
+- Built with **React** + **Inertia.js**
+- SPA-like experience with Laravel backend
+- Pages:
+  - Login Page (Google OAuth)
+  - Dashboard
+  - Note Editor with AI tools
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+## 🔗 Routes Overview
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Authentication
+- `GET /auth/google` – Redirect to Google
+- `GET /auth/google/callback` – Handle OAuth callback
+- `GET /logout` – Logout
 
-## Code of Conduct
+### Notes
+- `GET /notes` – List user notes
+- `GET /notes/create` – Create note form
+- `POST /notes` – Store new note
+- `GET /notes/{id}/edit` – Edit note
+- `PUT /notes/{id}` – Update note
+- `DELETE /notes/{id}` – Delete note
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### AI Endpoints
+- `POST /api/ai/summarize` – Summarize content
+- `POST /api/ai/tags` – Generate tags
 
-## Security Vulnerabilities
+### Misc
+- `GET /up` – Health check
+- `GET /raw/export_notes.php` – Export notes using raw PHP
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+---
 
-## License
+## 🧰 Tech Stack
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Frontend:** React, Inertia.js, Vite
+- **Backend:** Laravel 12 (PHP 8+)
+- **Database:** MySQL or PostgreSQL
+- **Authentication:** Google OAuth
+- **AI Integration:** OpenAI GPT-4.1-nano-2025-04-14
+- **Raw PHP:** One standalone script for integration demo
+
+---
+
+## ⚙️ Setup Instructions
+
+### Step 1: Clone the Repo
+```bash
+git clone https://github.com/your-username/ai-note-editor.git
+cd ai-note-editor
+Step 2: Install Backend & Frontend Dependencies
+bash
+Copy
+Edit
+composer install
+npm install
+Step 3: Create .env File
+bash
+Copy
+Edit
+cp .env.example .env
+Update the following in .env:
+
+env
+Copy
+Edit
+APP_URL=http://localhost:8000
+
+DB_DATABASE=your_db
+DB_USERNAME=your_user
+DB_PASSWORD=your_pass
+
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+GOOGLE_REDIRECT_URI=http://localhost:8000/auth/google/callback
+
+OPENAI_API_KEY=
+OPENAI_MODEL=gpt-4.1-nano-2025-04-14
+Step 4: Database Migration
+bash
+Copy
+Edit
+php artisan migrate
+Step 5: Run the App
+bash
+Copy
+Edit
+php artisan serve
+npm run dev
+Visit the app at: http://localhost:8000
+
+✅ Summary
+This project demonstrates:
+
+Modern authentication via Google OAuth
+
+Secure CRUD operations with auto-save
+
+Real-time React UI powered by Inertia
+
+AI-enhanced user experience using OpenAI
+
+Integration of legacy PHP with Laravel
+
+📂 Folder Structure (Highlights)
+bash
+Copy
+Edit
+/app
+/resources/js/Pages/        # React pages via Inertia
+/routes/web.php             # Web routes
+/routes/api.php             # API routes
+/public/raw/export_notes.php # Raw PHP script
+📌 Additional Notes
+CSRF protection and route middleware implemented
+
+Fully responsive for mobile and desktop
+
+Source code contains comments for clarity
+
+Even if partially complete, this project demonstrates structure, logic, and stack understanding
+
